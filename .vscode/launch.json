@@ -1,0 +1,79 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'AoC-2024'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=AoC-2024",
+                    "--package=AoC-2024"
+                ],
+                "filter": {
+                    "name": "AoC-2024",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'AoC-2024'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=AoC-2024",
+                    "--package=AoC-2024"
+                ],
+                "filter": {
+                    "name": "AoC-2024",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug current file",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=${fileBasenameNoExtension}",
+                    "--package=AoC-2024"
+                ],
+                "filter": {
+                    "name": "${fileBasenameNoExtension}",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day_01'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day_01",
+                    "--package=AoC-2024"
+                ],
+                "filter": {
+                    "name": "day_01",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
