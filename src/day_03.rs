@@ -27,12 +27,26 @@ impl Solution for Day03 {
         .map(|(first, second)| first * second)
         .sum();
 
-        return Ok(result);
-
+        Ok(result)
     }
     
     fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
-        return Ok(3);
+        let re = Regex::new(r"mul\(([0-9]{1,3}),([0-9]{1,3})\)|(do\(\))|(don't\(\))").unwrap();
+        let mut result: u32 = 0;
+        let mut enabled: bool = true;
+        for line in lines {
+            for captures in re.captures_iter(line) {
+                if enabled && captures.get(1).is_some() {
+                    result += captures.get(1).unwrap().as_str().parse::<u32>().unwrap() * captures.get(2).unwrap().as_str().parse::<u32>().unwrap()
+                } else if captures.get(3).is_some() {
+                    enabled = true;
+                } else if captures.get(4).is_some() {
+                    enabled = false;
+                }
+            }
+        }
+
+        Ok(result)
     }
 
 }
