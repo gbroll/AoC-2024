@@ -3,6 +3,7 @@ use std::fmt::Display;
 pub mod utils;
 pub mod day_01;
 pub mod day_02;
+pub mod day_03;
 
 pub trait Solution {
     type Item: Display;
