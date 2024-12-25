@@ -1,5 +1,5 @@
-use AoC_2024::*;
-use AoC_2024::utils;
+use aoc_2024::*;
+use aoc_2024::utils;
 
 fn run(day: u8, test_data: bool) {
     let lines = match test_data {
