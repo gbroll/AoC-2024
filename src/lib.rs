@@ -10,7 +10,7 @@ pub mod day_06;
 pub mod day_07;
 pub mod day_09;
 pub mod day_10;
-
+pub mod day_12;
 
 pub trait Solution {
     type Item: Display;

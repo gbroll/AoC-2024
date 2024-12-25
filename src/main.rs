@@ -16,12 +16,13 @@ fn run(day: u8, test_data: bool) {
         7 => day_07::Day07.run(&lines),
         9 => day_09::Day09.run(&lines),
         10 => day_10::Day10.run(&lines),
+        12 => day_12::Day12.run(&lines),
         _ => panic!("Unexpected day"),
     };
 }
 
 fn main() {
     let test_data: bool = false;
-    let day: u8 = 10;
+    let day: u8 = 12;
     run(day, test_data);
 }
