@@ -1,5 +1,5 @@
 use crate::Solution;
-use std::collections::HashSet;
+use std::{collections::HashSet, time::{Instant, Duration}};
 
 pub struct Day05;
 
@@ -68,11 +68,13 @@ impl Solution for Day05 {
         return 5;
     }
 
-    fn solve(&self, input: &Vec<String>) -> (Result<Self::Item, &str>, Result<Self::Item, &str>) {
+    fn solve(&self, input: &Vec<String>) -> ((Result<Self::Item, &str>, Duration), (Result<Self::Item, &str>, Duration)) {
+        let start = Instant::now();
         let rules = get_rules(&input);
         let updates = get_updates(&input);
         let result = solve_parts(&rules, &updates);
-        (Ok(result.0), Ok(result.1))
+        let duration = start.elapsed();
+        ((Ok(result.0), duration), (Ok(result.1), Duration::new(0, 0)))
     }
 
 }  
