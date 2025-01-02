@@ -20,13 +20,14 @@ fn run(day: u8, test_data: bool) {
         13 => day_13::Day13.run(&lines),
         14 => day_14::Day14.run(&lines),
         15 => day_15::Day15.run(&lines),
+        16 => day_16::Day16.run(&lines),
         _ => panic!("Unexpected day"),
     };
 }
 
 fn main() {
     let test_data: bool = false;
-    let day: u8 = 15;
+    let day: u8 = 16;
     run(day, test_data);
 }
 
