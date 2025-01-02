@@ -16,14 +16,14 @@ impl Solution for Day04 {
         return 4;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let grid = to_2d_char_array(lines);
         let search_word = vec!['X', 'M', 'A', 'S'];
         let word_count = part1_count(&grid, search_word);
         Ok(word_count)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let grid = to_2d_char_array(lines);
         let search_word = vec!['M', 'A', 'S'];
         let word_count = part2_count(&grid, search_word);

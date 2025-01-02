@@ -79,14 +79,14 @@ impl Solution for Day12 {
         return 1;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let garden = to_2d_char_array(lines);
         println!("{:?}", garden);
         let total_cost = fence_garden_regions(&garden);
         Ok(total_cost)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         Ok(2)
     }
 

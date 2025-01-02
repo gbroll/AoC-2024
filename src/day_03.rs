@@ -10,7 +10,7 @@ impl Solution for Day03 {
         return 3;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
 
         let re = Regex::new(r"mul\(([0-9]{1,3}),([0-9]{1,3})\)").unwrap();
         let mut factors: Vec<(u32, u32)> = Vec::new();
@@ -30,7 +30,7 @@ impl Solution for Day03 {
         Ok(result)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let re = Regex::new(r"mul\(([0-9]{1,3}),([0-9]{1,3})\)|(do\(\))|(don't\(\))").unwrap();
         let mut result: u32 = 0;
         let mut enabled: bool = true;

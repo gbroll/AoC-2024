@@ -73,13 +73,13 @@ impl Solution for Day13 {
         return 2;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let game_equations = parse(lines);
         let total_cost = solve(&game_equations, 0);
         Ok(total_cost)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let game_equations = parse(lines);
         let total_cost = solve(&game_equations, 10000000000000);
         Ok(total_cost)

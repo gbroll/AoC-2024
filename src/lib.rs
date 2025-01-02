@@ -17,48 +17,129 @@ pub mod day_14;
 pub mod day_15;
 pub mod day_16;
 
+
+pub struct PuzzleResult<T> {
+    day: u8,
+    part1_res: Result<T, String>,
+    part1_dur: Option<Duration>,
+    part2_res: Result<T, String>,
+    part2_dur: Option<Duration>,
+    total_dur: Duration
+}
+
+trait ResultPrinter {
+    fn print(&self);
+}
+
+impl<T: Display> ResultPrinter for PuzzleResult<T> {
+    fn print(&self) {
+        let part1_res_str = match &self.part1_res {
+            Ok(val) => val.to_string(),
+            Err(msg) => msg.to_string(),
+        };
+
+        let part2_res_str = match &self.part2_res {
+            Ok(val) => val.to_string(),
+            Err(msg) => msg.to_string(),
+        };
+
+        let part1_dur_str = match self.part1_dur {
+            Some(dur) => format!("{} ms", dur.as_millis()),
+            None => "N/A ms".to_string(),
+        };
+
+        let part2_dur_str = match self.part2_dur {
+            Some(dur) => format!("{} ms", dur.as_millis()),
+            None => "N/A ms".to_string(),
+        };
+
+        println!(
+            "Day: {}, part 1: {} ({}), part 2: {} ({}), total time elapsed: {} ms",
+            self.day,
+            part1_res_str,
+            part1_dur_str,
+            part2_res_str,
+            part2_dur_str,
+            self.total_dur.as_millis()
+        );
+    }
+}
+
 pub trait Solution {
     type Item: Display;
     
     fn day(&self) -> u8;
-
-    fn part1(&self, _input: &Vec<String>) -> Result<Self::Item, &str> {
-        return Err("Not yet implemented");
+    
+    fn combine_part1_and_part2(&self) -> bool {
+        false
     }
 
-    fn part2(&self, _input: &Vec<String>) -> Result<Self::Item, &str> {
-        return Err("Not yet implemented");
+    fn part1(&self, _input: &Vec<String>) -> Result<Self::Item, String> {
+        return Err("Not yet implemented".to_string());
     }
 
-    fn solve(&self, input: &Vec<String>) -> ((Result<Self::Item, &str>, Duration), (Result<Self::Item, &str>, Duration)) {
+    fn part2(&self, _input: &Vec<String>) -> Result<Self::Item, String> {
+        return Err("Not yet implemented".to_string());
+    }
+
+    fn solve(&self, _input: &Vec<String>) -> Result<(Self::Item, Self::Item), String> {
+        return Err("Not yet implemented".to_string());
+    }
+
+    fn solve_part_by_part(&self, input: &Vec<String>) -> PuzzleResult<Self::Item> {
         let mut start = Instant::now();
-        let part1 = self.part1(input);
+        let part1_res = self.part1(input);
         let part1_dur = start.elapsed();
+               
         start = Instant::now();
-        let part2 = self.part2(input);
+        let part2_res = self.part2(input);
         let part2_dur = start.elapsed();
-        ((part1, part1_dur), (part2, part2_dur))
+        
+        PuzzleResult {
+            day: self.day(),
+            part1_res,
+            part1_dur: Some(part1_dur),
+            part2_dur: Some(part2_dur),
+            part2_res,
+            total_dur: part1_dur + part2_dur
+        }
+
     }
 
-    fn print_res(&self, day: u8, res: ((Result<Self::Item, &str>, Duration), (Result<Self::Item, &str>, Duration))) {
-            let parts = vec![res.0, res.1];
-            for (part, part_res) in parts.iter().enumerate() {
-                match &part_res.0 {
-                    Ok(val) => {
-                        println!("**AoC 2024 day {} part {}: {} ({} ms) **", 
-                        day.to_string(), (part+1).to_string(), val.to_string(), part_res.1.as_millis()); 
-                    }
-                    Err(msg) => {
-                        println!("**AoC 2024 day {} part {}: {} **", 
-                        day.to_string(), (part+1).to_string(), msg.to_string());
-                    }
-                }
+    fn solve_both_parts(&self, input: &Vec<String>) -> PuzzleResult<Self::Item> {
+        let start = Instant::now();
+        let res = self.solve(input);
+        let total_dur = start.elapsed();
+
+        let part1_res: Result<Self::Item, String>;
+        let part2_res: Result<Self::Item, String>;
+        match res {
+            Ok(val) => {
+                part1_res = Ok(val.0);
+                part2_res = Ok(val.1)
             }
+            Err(msg) => {
+                part1_res = Err(msg.clone());
+                part2_res = Err(msg.clone());
+            }
+        }
+
+        PuzzleResult {
+            day: self.day(),
+            part1_res,
+            part1_dur: None,
+            part2_res,
+            part2_dur: None,
+            total_dur
+        }
     }
 
     fn run(&self, input: &Vec<String>) {
-        let res = self.solve(input);
-        self.print_res(self.day(), res);
+        let res = match self.combine_part1_and_part2() {
+            true => self.solve_both_parts(input),
+            false => self.solve_part_by_part(input)
+        };
+        res.print();
     }
 
 }

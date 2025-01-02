@@ -61,7 +61,7 @@ impl Solution for Day09 {
         return 9;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> {
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> {
         let mut input_q = to_q(lines);
         let input_len = input_q.len();
         let mut fs: Vec<u32> = Vec::new();
@@ -99,7 +99,7 @@ impl Solution for Day09 {
         Ok(calc_checksum(&fs))
     }
 
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> {
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> {
         let mut input = to_block_q(lines);
         let input_len = input.len();
         let mut output: Vec<Block> = Vec::new();

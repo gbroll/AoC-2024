@@ -67,7 +67,11 @@ impl Solution for Day16 {
         return 16;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn combine_part1_and_part2(&self) -> bool {
+        true
+    }
+
+    fn solve(&self, lines: &Vec<String>) -> Result<(Self::Item, Self::Item), String> {
         let (maze, start_pos, end_pos) = get_maze_and_start_pos(lines);
         let start_dir = Direction::East;
         let mut q: VecDeque<QItem> = VecDeque::new();
@@ -132,12 +136,8 @@ impl Solution for Day16 {
                 }
             }            
         }
-        println!("{:?}", tiles_on_best_path.len());
-        Ok(lowest_cost.unwrap())
+        Ok((lowest_cost.unwrap(), tiles_on_best_path.len() as Self::Item))
 
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
-        Ok(2)
-    }
 }

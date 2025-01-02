@@ -115,13 +115,13 @@ impl Solution for Day06 {
         return 6;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (mut map, start_pos) = get_map_and_start_pos(lines);
         let (count, _) = walk(&mut map, &start_pos.unwrap());
         Ok(count)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (map, start_pos) = get_map_and_start_pos(lines);
         let mut num_obs_for_loop: u32 = 0;
         for x in 0..map.len() {

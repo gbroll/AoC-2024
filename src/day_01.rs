@@ -10,7 +10,7 @@ impl Solution for Day01 {
         return 1;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
 
         let (left, right) = get_lists(lines);
         
@@ -19,7 +19,7 @@ impl Solution for Day01 {
         return Ok(result);
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (left, right) = get_lists(lines);
         let mut num_appearances: HashMap<u32,u32> = HashMap::new();
         for val in right.into_iter() {

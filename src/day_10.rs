@@ -86,13 +86,13 @@ impl Solution for Day10 {
         return 10;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (topmap, trailheads) = to_topmap(lines);
         let res = calc_trailhead_score(&topmap, &trailheads, true);
         Ok(res)
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> {
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> {
         let (topmap, trailheads) = to_topmap(lines);
         let res = calc_trailhead_score(&topmap, &trailheads, false);
         Ok(res)

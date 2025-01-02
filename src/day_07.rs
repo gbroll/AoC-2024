@@ -56,13 +56,13 @@ impl Solution for Day07 {
         return 7;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let equations = get_numbers_and_test_value(lines);
         let result: Self::Item = get_calibration_results(&equations, false);
         return Ok(result);
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let equations = get_numbers_and_test_value(lines);
         let result: Self::Item = get_calibration_results(&equations, true);
         return Ok(result);

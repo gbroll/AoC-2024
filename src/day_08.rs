@@ -75,7 +75,7 @@ impl Solution for Day08 {
         return 8;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String>> { 
         let (antennas, grid_size) = get_antennas(lines);
         for (key, value) in &antennas {
             println!("{}: {:?}", key, value);
@@ -84,7 +84,7 @@ impl Solution for Day08 {
         return Ok(result);
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String>> { 
         let (antennas, grid_size) = get_antennas(lines);
         let result = count_antinodes(&antennas, grid_size, true);
         return Ok(result);

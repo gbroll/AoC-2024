@@ -98,7 +98,7 @@ impl Solution for Day14 {
         return 14;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let mut robots = get_robot_init_state(lines);
         let (width, height): (u32, u32) = (101, 103);
         let num_seconds: u32 = 100;
@@ -107,7 +107,7 @@ impl Solution for Day14 {
         Ok(calc_safety_factor(&robots, &(width, height)))
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let mut robots = get_robot_init_state(lines);
         let (width, height): (u32, u32) = (101, 103);
 

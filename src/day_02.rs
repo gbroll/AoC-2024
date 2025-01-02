@@ -9,13 +9,13 @@ impl Solution for Day02 {
         return 2;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let reports = parse_reports(lines);
         let result = count_safe_reports(&reports);
         return Ok(result.0 as u32);
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let reports = parse_reports(lines);
         let result = count_safe_reports(&reports);
         return Ok(result.0 as u32 + result.1 as u32);

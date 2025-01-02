@@ -208,7 +208,7 @@ impl Solution for Day15 {
         return 15;
     }
 
-    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (mut warehouse, start_position, moves) = parse_input(lines);
         let mut pos = start_position;
         for move_dir in moves {
@@ -218,7 +218,7 @@ impl Solution for Day15 {
         Ok(sum_box_coordinates(warehouse, 'O'))
     }
     
-    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, String> { 
         let (warehouse, start_position, moves) = parse_input(lines);
         let (mut warehouse, start_position) = resize_warehouse(&warehouse, start_position);
         let mut pos = start_position;
